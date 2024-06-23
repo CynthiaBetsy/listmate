@@ -1,21 +1,29 @@
-
-
- * {
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+}
+:root {
+  --gradient: #8a2be2;
+  --dark: #f80303;
+  --light: #fcb7b7;
+  --white: #ffffff;
 }
 
 body {
   width: 100%;
   padding: 10px;
-  background-color: #8a2be2;
+  background-color: var(--gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* align-items: center; */
 }
 
 .head {
   width: 100%;
-  background-color: white;
+  background-color: var(--white);
   margin-bottom: 20px;
   padding: 40px 30px 70px;
   border-radius: 20px;
@@ -28,111 +36,177 @@ body {
 }
 
 h1 {
-  color: #8a2be2;
+  color: var(--gradient);
   font-size: 50px;
 }
 
-.Today-todo {
+/* .Todo-input {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: transparent;
-  background-color: white;
+  flex-direction: row;
+  justify-items: flex-end;
+  background-color: var(--white);
   border-radius: 30px;
   margin: auto;
   margin-bottom: 20px;
-  max-width: 40%;
+  max-width: 30%;
+} */
+
+.Todo-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 60%;
+  background-color: var(--white);
+  justify-content: space-between;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
-#new-item-input {
+@media (max-width: 500px) {
+  .todo-input {
+    flex-direction: column;
+  }
+}
+input {
   flex: 1;
   border: none;
+  border-radius: 30px;
   outline: none;
   background: transparent;
-  padding: 20px;
-  font-size: 14px;
+  padding: 18px;
+  font-size: 10.5px;
+  margin: auto;
 }
-
-.add-todo {
-  outline: none;
+.btn {
   border: none;
-  margin: 0;
-  position: static;
-  border-radius: 30px;
-  padding: 19px 30px;
-  font-size: 16px;
-  color: white;
-  background-color: #f80303;
+  ouline: none;
+  border-radius: 20px;
+  text-wrap: normal;
+  font-size: 11px;
+  padding-left: 20px;
+  padding-right: 35px;
+  padding-top: 17.5px;
+  padding-bottom: 17.5px;
+  max-width: 20%;
+  color: var(--white);
+  background-color: var(--dark);
   cursor: pointer;
 }
-.category{
-  font-size: 35px;
-
+.btn:hover {
+  background-color: var(--light);
 }
-
-.add-todo:hover {
-  background-color: #fcb7b7;
+ul li {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  gap: 1.2rem;
+  padding: 1.3rem;
+}
+.checked {
+  display: flex;
+  text-decoration: line-through;
+}
+input[type="checkbox"]::before {
+  content: "\2713";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  color: transparent;
+  font-size: 1.7rem;
+  border-radius: 50%;
+  border: 0.06rem solid var(--light);
+}
+input[type="checkbox"]::before::after {
+  color: var(--white);
+  background-color: green;
+  border-radius: 50%;
+  border: 0.06rem solid green;
 }
 
 h3 {
-  color: white;
+  color: var(--white);
   font-size: 30px;
   margin-left: 50px;
   margin-top: 15px;
 }
 
-#category1::after {
-  color: #7ff0ff;
-}
-
-#category2::after {
-  color: #ff7ff4;
-}
-
 .container {
-  color: white;
+  display: flex;
+  color: var(--white);
   text-align: center;
   font-size: 30px;
   margin-bottom: 25px;
 }
 
-#category1 {
-  margin-left: 20px;
-}
-
-#category2 {
-  margin-left: 20px;
-}
-
 p {
-  color: white;
+  color: var(--white);
   font-size: 20px;
   margin-left: 100px;
 }
 
 .Todo-list {
-  margin-left: 100px;
- /* visibility: hidden ; */
+  margin: none;
 }
 
 .todo-content {
-  display:inline-flex;
+  display: inline-flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--white);
 }
 
 #edit {
   background-attachment: fixed;
-  background-color: white;
-  color: #8a2be2;
-  border: solid white;
+  background-color: var(--white);
+  color: var(--gradient);
+  border: solid var(--white);
   margin: none;
 }
 #cancel {
   background-attachment: fixed;
-  background-color: white;
-  color: #8a2be2;
-  border: solid white;
+  background-color: var(--white);
+  color: var(--gradient);
+  border: solid var(--white);
   margin: none;
+}
 
+.counter-container {
+  height: 2rem;
+  display: flex;
+  color: gray;
+  justify-content: space-between;
+}
+
+.counter-container p {
+  align-self: center;
+}
+.counter-container button {
+  border: none;
+  background-color: #ad05ade5;
+  color: var(--white);
+  border-radius: 0.5rem;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.counter-container button:hover {
+  background-color: rgba(194, 149, 236, 1.75);
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  margin: 0;
+  background-color: var(--white);
+  color: var(--gradient);
+  width: 100%;
+  text-align: center;
+  padding: 3px;
+  bottom: 0px;
 }
