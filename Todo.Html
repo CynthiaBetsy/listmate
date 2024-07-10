@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ListMate</title>
-<Link rel="stylesheet" href="Todo.css">
-    <link rel="image" href="image">
-    <script src="https://kit.fontawesome.com/e23036e9b4.js" crossorigin="anonymous"></script>
-</head>
-<body>
-  <main>
-    <div class="head" display="flex">
-    <h1 style="text-align: center;">Hello ListMate! <img class="icon" src="image/icon.jpg"></h1>
-    </div>
-    <div class="Todo-input">
-      <input type="text" name="input-field" id="input-field" placeholder="Enter a new task!">
-      <button class="btn" id="add-task" onclick="addTask">Add task</button>
-    </div>
-    <div class="container">
-      <h3>My To-do List</h3>
-    
-    </div>
-    </form>
-    <!-- This div holds the Todo-list -->
-    <div class="Todo-list">
-<ul id="list-container">
-  <li class="lists" id="box"></li>
-</ul>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ListMate</title>
+    <link rel="stylesheet" href="Todo.css" />
+    <link rel="image" href="image" />
+    <script
+      src="https://kit.fontawesome.com/e23036e9b4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div class="head" display="flex">
+        <h1 style="text-align: center">
+          Hello ListMate! <img class="icon" src="image/td icon.png" />
+        </h1>
       </div>
-      <br>
-      <hr class="counter">
-      <div class="counter-container">
-      <p><span id="total-tasks">0</span>
-        tasks Added</p>
-      <button class="dlt" id="clear">Clear All</button>
-    </div>
-  </main>
-  <br>
-<footer>
-  <div class="footer">
-    &copy; CeeCee 2024
-  </div>
-</footer>
-  <script src="Todo.js"></script>
-</body>
-</html> 
+      <div class="Todo-input">
+        <input
+          type="text"
+          name="input-field"
+          id="input-field"
+          placeholder="Enter a new task!"
+        />
+        <button class="btn" id="add-task" onclick="createToDoData()">
+          Add
+        </button>
+      </div>
+      <div class="container">
+        <h3>My To-do List</h3>
+      </div>
 
+      <!-- This div holds the Todo-list -->
+      <div class="tasks">
+        <ul id="list-container"></ul>
+      </div>
+      <br />
+      <hr class="counter" />
+      <div class="counter-container">
+        <p><span id="total-tasks">0</span> tasks Added</p>
+        <button class="dlt" id="clear">Clear All</button>
+      </div>
+    </main>
+    <br />
+    <footer>
+      <div class="footer">&copy; CeeCee 2024</div>
+    </footer>
+    <script src="Todo.js"></script>
+  </body>
+</html>

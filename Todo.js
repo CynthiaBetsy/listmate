@@ -1,4 +1,5 @@
-const edit = document.getElementById("edit");
+const edit = document.querySelector(".edit");
+const cancel = document.querySelector(".delete");
 const lists = document.getElementById("list-container");
 const addTask = document.getElementById("add-task");
 const newTask = document.getElementById("input-field");
@@ -6,47 +7,50 @@ const taskAmount = document.getElementById("total-tasks");
 const clear = document.getElementById("clear");
 
 const content = [];
+let taskCount = 0;
+const displayCount = () => {
+  taskAmount.innerText = taskCount;
+};
 
-// Adding the 'Enter key' as an alternative to Add Task button
-function addItem(event) {
-  const inputValue = event.target.value;
-  if (event.key === "Enter") {
-    event.preventDefault();
-    if (inputValue === "") {
-      alert("Enter a task!");
-    } else {
-      content.push(inputValue);
-      const modifiedArray = content.map(function (item, index) {
-        return `<p>${content[index]}</p><br>`;
-      });
-      const lists = document.getElementById("list-container");
-      lists.innerHTML = modifiedArray.join("");
-      newTask.value = "";
-      taskAmount.textContent = content.length;
-    }
+// function for creating a to-do task
+newTask.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    addTask.click();
   }
-}
-newTask.addEventListener("keydown", addItem);
-
-// for the add task button
-function addBtn() {
-  const inputValue = document.getElementById("input-field").value;
-  if (inputValue === "") {
+});
+function createToDoData() {
+  if (newTask.value === "") {
     alert("Enter a task!");
   } else {
-    content.push(inputValue);
-    const modifiedArray = content.map(function (item, index) {
-      return `<p>${content[index]}</p><br>`;
-    });
-    const lists = document.getElementById("list-container");
-    lists.innerHTML = modifiedArray.join("");
+    let li = document.createElement("li");
+    const todoItems = `<div class="To-do"><input type="checkbox" class="task-check" onclick="checked()"><span class="content"> ${newTask.value}</span>
+<button onclick = "" class ="edit">Edit</button>
+<button class="delete">Delete</button><br>
+</div>`;
+    li.innerHTML = todoItems;
+    lists.appendChild(li);
     newTask.value = "";
-    taskAmount.textContent = content.length;
+    // taskAmount.innerHTML = taskCount;
   }
 }
-addTask.addEventListener("click", addBtn);
+// function for checkbox
+const checkBox = document.getElementById("checkbox");
+function checked(e) {
+  if (checkBox.click) {
+    newTask.Value.style.textDecoration = "line-through";
+  }
+}
+// function for delete button
+const deleteBtn = document.querySelectorAll(".delete");
+deleteBtn.forEach((button) => {
+  button.onclick = () => {
+    parentNode.remove();
+    taskCount = -1;
+    displayCount(taskCount);
+  };
+});
 
-// Function to clear all tasks
+// for clear button
 function clrBtn() {
   if (content.length === 0) {
     alert("No tasks to delete!");
@@ -58,4 +62,3 @@ function clrBtn() {
 }
 clear.addEventListener("click", clrBtn);
 
-// update(Todo.html, Todo.css, Todo.js): add functions in js file to clear and modify todo list, add section to view bla bla bla in html
